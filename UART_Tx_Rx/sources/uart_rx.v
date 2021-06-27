@@ -13,11 +13,11 @@ module uart_rx #(parameter CLK_CYCLES = 0, parameter BIT_NUM = 0)
 	output [(BIT_NUM - 1):0] o_rx_data
 );
 
-reg [1:0] r_SM = 0;
-reg [15:0] r_counter = 0;  //counter for counting the clock cycles for each bit
+reg [1:0] r_SM = 2'd0;
+reg [15:0] r_counter = 16'd0;  //counter for counting the clock cycles for each bit
 reg r_rx_temp = 1'd1;
 reg r_rx_data = 1'd1;
-reg [3:0] r_num_bits = 0;
+reg [3:0] r_num_bits = 4'd0;  //used for counting which data bit we are picking to output
 reg [(BIT_NUM - 1):0] r_rx_storage = 0;
 
 localparam IDLE = 0;
